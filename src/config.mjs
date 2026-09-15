@@ -3,6 +3,7 @@
 export const config = {
   siteUrl: 'https://mydrtaxi.com',
   name: 'My DR Taxi',
+  formerName: 'Winton Quick Services', // previous business name, for search/AI entity matching only
   driver: 'Winton',
   phone: '+18299295355',
   phoneDisplay: '+1 829-929-5355',
@@ -16,10 +17,11 @@ export const config = {
   // (.jpg, .jpeg, .png or .webp — add both .webp and .jpg for best results).
   // Missing photos render as clean illustrated placeholders.
   photos: {
-    hero: 'winton-minivan',       // Winton standing with the Toyota minivan (landscape or portrait, 1600px+)
-    portrait: 'winton-portrait',  // Friendly head-and-shoulders shot of Winton (square, 600px+)
-    exterior: 'minivan-exterior', // The minivan on its own (landscape, 1600px+)
-    interior: 'minivan-interior', // Clean seats / cabin (landscape, 1600px+)
+    hero: 'winton-minivan',       // Winton with the Toyota minivan (portrait 4:4.6)
+    portrait: 'winton-portrait',  // Friendly photo of Winton (4:4.4)
+    avatar: 'winton-avatar',      // Face crop for the round driver-card avatar (square); falls back to portrait
+    exterior: 'minivan-exterior', // The minivan, e.g. trunk full of luggage (landscape 16:10)
+    airport: 'airport-luggage',   // Airport pickup / loading luggage (landscape 16:10)
   },
 
   // Paste the embed code from your live Google Reviews widget provider

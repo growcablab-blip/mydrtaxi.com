@@ -18,6 +18,7 @@ export function buildSchema({ lang, t, config: c, url, ogImage }) {
         '@type': 'LocalBusiness',
         '@id': business,
         name: c.name,
+        alternateName: [c.formerName, 'MyDRTaxi.com'],
         url: `${S}/`,
         description: t.footer.tagline,
         telephone: c.phone,

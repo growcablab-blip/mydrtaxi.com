@@ -49,7 +49,7 @@ function llmsTxt(t, c) {
 
 > ${t.footer.tagline} Private driver: ${c.driver}. Available 24/7. Book by WhatsApp: ${c.phoneDisplay}.
 
-${c.name} (${S}) is a private taxi and airport transfer service on the North Coast of the Dominican Republic, run by driver ${c.driver} and a small trusted team. Travelers contact the driver directly on WhatsApp for availability and a price agreed before the ride. It is not a booking platform or aggregator.
+${c.name} (${S}), formerly known as ${c.formerName}, is a private taxi and airport transfer service on the North Coast of the Dominican Republic, run by driver ${c.driver} and a small trusted team. Travelers contact the driver directly on WhatsApp for availability and a price agreed before the ride. It is not a booking platform or aggregator.
 
 ## Key facts
 - Service: private taxi, airport transfers, airport meet-and-greet with a name sign, local rides, long-distance private transfers nationwide

@@ -47,6 +47,9 @@ ul{margin:0;padding:0;list-style:none}
 .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:1.08rem;letter-spacing:-.01em;white-space:nowrap}
 .hdr .brand{margin-right:auto}
 .brand b{color:var(--gold);font-weight:800}
+.brand .logo{display:block;height:36px;width:auto}
+.ftr .brand .logo{height:48px}
+.nf .brand .logo{height:56px;margin:0 auto}
 .mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1b1307;font-size:.78rem;font-weight:900;letter-spacing:.02em}
 .nav{display:none}
 .nav a{color:var(--muted);font-size:.93rem;font-weight:600;transition:color .15s}
@@ -243,6 +246,7 @@ h1{font-size:clamp(2.3rem,9.5vw,4.5rem);line-height:1.02;letter-spacing:-.035em;
 @media (min-width:960px){
   body{padding-bottom:0}
   .nav{display:flex;gap:24px;margin-right:12px}
+  .hdr .brand .logo{height:44px}
   .hero{padding:72px 0 96px}
   .hero-grid{grid-template-columns:1.08fr .92fr;align-items:center;gap:60px}
   .photo-hero{aspect-ratio:4/4.6}

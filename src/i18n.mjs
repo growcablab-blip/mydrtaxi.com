@@ -122,8 +122,8 @@ const en = {
   alt: {
     hero: 'Winton, driver of My DR Taxi, with his Toyota minivan',
     portrait: 'Winton, private driver at My DR Taxi',
-    exterior: 'The My DR Taxi Toyota minivan',
-    interior: 'Clean interior of the My DR Taxi minivan with room for 6 passengers',
+    exterior: 'Winton beside the Toyota minivan with the trunk full of luggage',
+    airport: 'Winton loading a guest’s suitcase into the Toyota minivan at the airport',
   },
   notFound: { title: 'Page not found', body: 'This page doesn’t exist, but your driver is still just one message away.', back: 'Back to home' },
 };
@@ -249,8 +249,8 @@ const es = {
   alt: {
     hero: 'Winton, conductor de My DR Taxi, con su minivan Toyota',
     portrait: 'Winton, conductor privado de My DR Taxi',
-    exterior: 'La minivan Toyota de My DR Taxi',
-    interior: 'Interior limpio de la minivan de My DR Taxi con espacio para 6 pasajeros',
+    exterior: 'Winton junto a la minivan Toyota con el maletero lleno de equipaje',
+    airport: 'Winton cargando la maleta de un cliente en la minivan Toyota en el aeropuerto',
   },
   notFound: { title: 'Página no encontrada', body: 'Esta página no existe, pero tu conductor sigue a un solo mensaje de distancia.', back: 'Volver al inicio' },
 };
@@ -376,8 +376,8 @@ const fr = {
   alt: {
     hero: 'Winton, chauffeur de My DR Taxi, avec son minivan Toyota',
     portrait: 'Winton, chauffeur privé chez My DR Taxi',
-    exterior: 'Le minivan Toyota de My DR Taxi',
-    interior: 'Intérieur propre du minivan My DR Taxi, avec de la place pour 6 passagers',
+    exterior: 'Winton à côté du minivan Toyota, coffre rempli de bagages',
+    airport: 'Winton charge la valise d’un client dans le minivan Toyota à l’aéroport',
   },
   notFound: { title: 'Page introuvable', body: 'Cette page n’existe pas, mais votre chauffeur n’est qu’à un message.', back: 'Retour à l’accueil' },
 };
@@ -503,8 +503,8 @@ const ru = {
   alt: {
     hero: 'Winton, водитель My DR Taxi, со своим минивэном Toyota',
     portrait: 'Winton — личный водитель My DR Taxi',
-    exterior: 'Минивэн Toyota My DR Taxi',
-    interior: 'Чистый салон минивэна My DR Taxi на 6 пассажиров',
+    exterior: 'Winton рядом с минивэном Toyota с полным багажником чемоданов',
+    airport: 'Winton загружает чемодан пассажира в минивэн Toyota в аэропорту',
   },
   notFound: { title: 'Страница не найдена', body: 'Такой страницы нет, но ваш водитель всё так же на расстоянии одного сообщения.', back: 'На главную' },
 };

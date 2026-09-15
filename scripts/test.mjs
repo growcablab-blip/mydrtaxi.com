@@ -95,7 +95,7 @@ check(robots.includes(`Sitemap: ${config.siteUrl}/sitemap.xml`), 'robots.txt sit
 check(existsSync(path.join(DIST, 'llms.txt')), 'llms.txt exists');
 const nf = await readFile(path.join(DIST, '404.html'), 'utf8');
 check(nf.includes('noindex') && !nf.includes('rel="canonical"'), '404 is noindex without canonical');
-for (const f of ['favicon.svg', 'favicon-32.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'og-default.png', 'site.webmanifest']) {
+for (const f of ['images/logo.png', 'favicon-32.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'og-default.png', 'site.webmanifest']) {
   check(existsSync(path.join(DIST, f)), `asset ${f}`);
 }
 

@@ -29,8 +29,8 @@ ${alts}<link rel="alternate" hreflang="x-default" href="${c.siteUrl}/">
 <meta name="theme-color" content="#08121d">
 <meta name="geo.region" content="DO-18">
 <meta name="geo.placename" content="Cabarete, Sosúa, Puerto Plata">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="website">
@@ -74,8 +74,9 @@ export function renderPage(ctx) {
   const serviceIcons = ['sign', 'plane', 'pin', 'route'];
   const specIcons = ['users', 'wifi', 'wind', 'bag'];
 
-  const avatar = photos.portrait
-    ? `<img src="${photos.portrait.src}" alt="" width="46" height="46" decoding="async">`
+  const avatarImg = photos.avatar || photos.portrait;
+  const avatar = avatarImg
+    ? `<img src="${avatarImg.src}" alt="" width="46" height="46" decoding="async">`
     : 'W';
 
   const msg = { intro: t.quote.msg.intro, outro: t.quote.msg.outro, fields: t.quote.msg.fields };
@@ -93,7 +94,7 @@ ${sprite}
 
 <header class="hdr">
   <div class="wrap">
-    <a class="brand" href="${pagePath(lang)}" aria-label="${esc(c.name)}"><span class="mark" aria-hidden="true">DR</span><span>My DR <b>Taxi</b></span></a>
+    <a class="brand" href="${pagePath(lang)}" aria-label="${esc(c.name)}"><img class="logo" src="/images/logo.png" alt="My DR Taxi" width="427" height="100"></a>
     <nav class="nav" aria-label="${esc(t.a11y.nav)}">
       <a href="#services">${esc(t.nav.services)}</a>
       <a href="#airports">${esc(t.nav.airports)}</a>
@@ -225,7 +226,7 @@ ${sprite}
   <div class="wrap split split-rev">
     <div class="photos">
       ${photo(photos.exterior, t.alt.exterior, { cls: 'photo-wide', kind: 'van', draft, file: c.photos.exterior })}
-      ${photo(photos.interior, t.alt.interior, { cls: 'photo-wide', kind: 'interior', draft, file: c.photos.interior })}
+      ${photo(photos.airport, t.alt.airport, { cls: 'photo-wide', kind: 'interior', draft, file: c.photos.airport })}
     </div>
     <div>
       <p class="kicker">${esc(t.vehicle.kicker)}</p>
@@ -286,7 +287,7 @@ ${sprite}
   <div class="wrap">
     <div class="ftr-grid">
       <div>
-        <a class="brand" href="${pagePath(lang)}"><span class="mark" aria-hidden="true">DR</span><span>My DR <b>Taxi</b></span></a>
+        <a class="brand" href="${pagePath(lang)}"><img class="logo" src="/images/logo.png" alt="My DR Taxi" width="427" height="100"></a>
         <p>${esc(t.footer.tagline)}</p>
       </div>
       <div>
@@ -332,7 +333,7 @@ export function render404(ctx) {
 ${sprite}
 <main class="nf">
   <div class="wrap">
-    <a class="brand" href="/"><span class="mark" aria-hidden="true">DR</span><span>My DR <b>Taxi</b></span></a>
+    <a class="brand" href="/"><img class="logo" src="/images/logo.png" alt="My DR Taxi" width="427" height="100"></a>
     <h1>${esc(t.notFound.title)}</h1>
     <p class="lead">${esc(t.notFound.body)}</p>
     <div class="row">
