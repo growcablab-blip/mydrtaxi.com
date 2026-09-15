@@ -45,18 +45,27 @@ ${alts}<link rel="alternate" hreflang="x-default" href="${c.siteUrl}/">
 ${extraHead}<style>${css}</style>`;
 }
 
-function photo(img, alt, { cls = '', eager = false, kind = 'van', draft = false, file = '' }) {
+// `sizes` hints per slot (layout widths: .wrap max 1180px with 20px padding).
+const SIZES = {
+  hero: '(min-width: 1180px) 510px, (min-width: 960px) 44vw, calc(100vw - 40px)',
+  portrait: '(min-width: 1180px) 520px, (min-width: 960px) 44vw, calc(100vw - 40px)',
+  vehicle: '(min-width: 1180px) 570px, (min-width: 960px) 48vw, calc(100vw - 40px)',
+  cta: '(min-width: 1180px) 1140px, calc(100vw - 40px)',
+};
+
+const srcsetAttrs = (img, sizes) => (img.srcset ? ` srcset="${img.srcset}" sizes="${sizes}"` : '');
+
+function photo(img, alt, { cls = '', eager = false, sizes = '100vw', kind = 'van', draft = false, file = '' }) {
   if (img) {
-    const source = img.webp && img.src !== img.webp ? `<source srcset="${img.webp}" type="image/webp">` : '';
-    const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"';
-    return `<div class="photo ${cls}"><picture>${source}<img src="${img.src}" alt="${esc(alt)}" ${loading} decoding="async"></picture></div>`;
+    const loading = eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+    return `<div class="photo ${cls}"><img src="${img.src}"${srcsetAttrs(img, sizes)} width="${img.width}" height="${img.height}" alt="${esc(alt)}" ${loading} decoding="async"></div>`;
   }
-  const note = draft ? `<span class="ph-note">images/${file}.jpg</span>` : '';
+  const note = draft ? `<span class="ph-note">images/${file}</span>` : '';
   return `<div class="photo ${cls}" aria-hidden="true"><div class="ph ph-${kind}">${art[kind]}</div>${note}</div>`;
 }
 
 export function renderPage(ctx) {
-  const { lang, dicts, config: c, photos, draft, css, js, ogImage, year } = ctx;
+  const { lang, dicts, config: c, photos, airportCards = {}, draft, css, js, ogImage, year } = ctx;
   const t = dicts[lang];
   const url = c.siteUrl + pagePath(lang);
   const wa = (text) => `https://wa.me/${c.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -74,17 +83,16 @@ export function renderPage(ctx) {
   const serviceIcons = ['sign', 'plane', 'pin', 'route'];
   const specIcons = ['users', 'wifi', 'wind', 'bag'];
 
-  const avatarImg = photos.avatar || photos.portrait;
-  const avatar = avatarImg
-    ? `<img src="${avatarImg.src}" alt="" width="46" height="46" decoding="async">`
-    : 'W';
+  const heroPreload = photos.hero
+    ? `<link rel="preload" as="image" href="${photos.hero.src}"${photos.hero.srcset ? ` imagesrcset="${photos.hero.srcset}" imagesizes="${SIZES.hero}"` : ''} fetchpriority="high">\n`
+    : '';
 
   const msg = { intro: t.quote.msg.intro, outro: t.quote.msg.outro, fields: t.quote.msg.fields };
   const placeOptions = Object.values(t.places).map((p) => `<option value="${esc(p)}">`).join('');
 
   const reviewsEmbed = c.reviews.embedHtml.trim();
 
-  return `${head({ lang, t, config: c, url, ogImage, css })}
+  return `${head({ lang, t, config: c, url, ogImage, css, extraHead: heroPreload })}
 <script type="application/ld+json">${schema}</script>
 </head>
 <body>
@@ -125,12 +133,7 @@ ${sprite}
       <ul class="badges">${t.hero.badges.map((b, i) => `<li>${ic(badgeIcons[i])}${esc(b)}</li>`).join('')}</ul>
     </div>
     <div class="hero-media">
-      ${photo(photos.hero, t.alt.hero, { cls: 'photo-hero', eager: true, kind: 'van', draft, file: c.photos.hero })}
-      <div class="driver">
-        <span class="avatar" aria-hidden="true">${avatar}</span>
-        <span class="driver-id"><strong>${esc(c.driver)}</strong><small><span class="dot" aria-hidden="true"></span>${esc(t.driver.role)} · ${esc(t.driver.status)}</small></span>
-        <a class="btn btn-wa driver-btn" ${waAttrs(t.wa.default, 'driver-card')} aria-label="${esc(t.cta.talkLong)}">${ic('wa')}</a>
-      </div>
+      ${photo(photos.hero, t.alt.hero, { cls: 'photo-hero', eager: true, sizes: SIZES.hero, kind: 'van', draft, file: c.photos.hero.file })}
     </div>
   </div>
 </section>
@@ -150,7 +153,7 @@ ${sprite}
 
 <section class="sec sec-alt" id="winton">
   <div class="wrap split">
-    ${photo(photos.portrait, t.alt.portrait, { cls: 'photo-portrait', kind: 'portrait', draft, file: c.photos.portrait })}
+    ${photo(photos.portrait, t.alt.portrait, { cls: 'photo-portrait', sizes: SIZES.portrait, kind: 'portrait', draft, file: c.photos.portrait.file })}
     <div>
       <p class="kicker">${esc(t.winton.kicker)}</p>
       <h2 class="h2">${esc(t.winton.title)}</h2>
@@ -172,6 +175,10 @@ ${sprite}
       ${c.airports.map((a) => {
         const item = t.airports.items[a.code];
         const text = t.wa.airport.replace('{airport}', t.places[a.key]);
+        const card = airportCards[a.code];
+        if (card) {
+          return `<a class="apt-card" ${waAttrs(text, 'airport-' + a.code)} aria-label="${esc(`${t.airports.action}: ${item.name}`)}"><img src="${card.src}" width="${card.width}" height="${card.height}" alt="${esc(`${a.code} · ${item.name} · ${item.area}`)}" loading="lazy" decoding="async"></a>`;
+        }
         return `<a class="apt" ${waAttrs(text, 'airport-' + a.code)}><span class="code">${a.code}</span><strong>${esc(item.name)}</strong><span class="area">${ic('pin')}${esc(item.area)}</span><span class="go">${ic('wa')}${esc(t.airports.action)}${ic('arrow')}</span></a>`;
       }).join('\n      ')}
     </div>
@@ -225,8 +232,8 @@ ${sprite}
 <section class="sec sec-alt" id="vehicle">
   <div class="wrap split split-rev">
     <div class="photos">
-      ${photo(photos.exterior, t.alt.exterior, { cls: 'photo-wide', kind: 'van', draft, file: c.photos.exterior })}
-      ${photo(photos.airport, t.alt.airport, { cls: 'photo-wide', kind: 'interior', draft, file: c.photos.airport })}
+      ${photo(photos.exterior, t.alt.exterior, { cls: 'photo-vehicle', sizes: SIZES.vehicle, kind: 'van', draft, file: c.photos.exterior.file })}
+      ${photo(photos.interior, t.alt.interior, { cls: 'photo-vehicle', sizes: SIZES.vehicle, kind: 'interior', draft, file: c.photos.interior.file })}
     </div>
     <div>
       <p class="kicker">${esc(t.vehicle.kicker)}</p>
@@ -271,12 +278,15 @@ ${sprite}
 
 <section class="sec" id="contact">
   <div class="wrap">
-    <div class="final">
-      <h2>${esc(t.final.title)}</h2>
-      <p>${esc(t.final.body)}</p>
-      <div class="row">
-        <a class="btn btn-wa btn-lg" ${waAttrs(t.wa.default, 'final')}>${ic('wa')}${esc(t.cta.talkLong)}</a>
-        <a class="btn btn-ghost btn-lg" ${tel}>${ic('phone')}${esc(c.phoneDisplay)}</a>
+    <div class="final-scene${photos.cta ? ' has-photo' : ''}">
+      ${photos.cta ? `<img class="final-bg" src="${photos.cta.src}"${srcsetAttrs(photos.cta, SIZES.cta)} width="${photos.cta.width}" height="${photos.cta.height}" alt="" loading="lazy" decoding="async">` : ''}
+      <div class="final">
+        <h2>${esc(t.final.title)}</h2>
+        <p>${esc(t.final.body)}</p>
+        <div class="row">
+          <a class="btn btn-wa btn-lg" ${waAttrs(t.wa.default, 'final')}>${ic('wa')}${esc(t.cta.talkLong)}</a>
+          <a class="btn btn-ghost btn-lg" ${tel}>${ic('phone')}${esc(c.phoneDisplay)}</a>
+        </div>
       </div>
     </div>
   </div>

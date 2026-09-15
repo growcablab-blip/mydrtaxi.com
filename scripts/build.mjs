@@ -25,13 +25,18 @@ const minifyJs = (js) => js
   .split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('//'))
   .join('\n');
 
-function findPhoto(base) {
-  const dir = path.join(PUB, 'images');
-  const has = (ext) => existsSync(path.join(dir, `${base}.${ext}`));
-  const raster = ['jpg', 'jpeg', 'png'].find(has);
-  const webp = has('webp') ? `/images/${base}.webp` : null;
-  if (!raster && !webp) return null;
-  return { src: raster ? `/images/${base}.${raster}` : webp, webp };
+// Resolve an image spec ({ file, width, height, variants }) to { src, srcset, width, height },
+// or null when the file is missing (the template then renders a placeholder).
+function resolveImage(spec) {
+  if (!spec || !existsSync(path.join(PUB, 'images', spec.file))) return null;
+  const src = `/images/${spec.file}`;
+  const variants = (spec.variants || [])
+    .map((w) => ({ w, url: src.replace(/(\.\w+)$/, `-${w}$1`) }))
+    .filter(({ url }) => existsSync(path.join(PUB, url)));
+  const srcset = variants.length
+    ? [...variants.map(({ w, url }) => `${url} ${w}w`), `${src} ${spec.width}w`].join(', ')
+    : '';
+  return { src, srcset, width: spec.width, height: spec.height };
 }
 
 async function write(rel, content) {
@@ -84,12 +89,13 @@ export async function build() {
 
   const css = minifyCss(await readFile(path.join(SRC, 'styles.css'), 'utf8'));
   const js = minifyJs(await readFile(path.join(SRC, 'app.js'), 'utf8'));
-  const photos = Object.fromEntries(Object.entries(config.photos).map(([k, base]) => [k, findPhoto(base)]));
+  const photos = Object.fromEntries(Object.entries(config.photos).map(([k, spec]) => [k, resolveImage(spec)]));
+  const airportCards = Object.fromEntries(config.airports.map((a) =>
+    [a.code, a.card ? resolveImage({ file: a.card, ...config.airportCard }) : null]));
 
-  const ogBase = findPhoto('og') || photos.hero;
-  const ogImage = config.siteUrl + (ogBase ? (ogBase.src.endsWith('.webp') ? '/og-default.png' : ogBase.src) : '/og-default.png');
+  const ogImage = config.siteUrl + (existsSync(path.join(PUB, 'images', 'og.jpg')) ? '/images/og.jpg' : '/og-default.png');
   const year = new Date().getFullYear();
-  const ctx = { dicts, config, photos, draft, css, js, ogImage, year };
+  const ctx = { dicts, config, photos, airportCards, draft, css, js, ogImage, year };
 
   const report = [];
   for (const lang of config.languages) {
@@ -186,7 +192,10 @@ AddType text/plain .txt
 </IfModule>
 `);
 
-  const missing = Object.entries(photos).filter(([, v]) => !v).map(([k]) => `images/${config.photos[k]}.jpg`);
+  const missing = [
+    ...Object.entries(photos).filter(([, v]) => !v).map(([k]) => `images/${config.photos[k].file}`),
+    ...config.airports.filter((a) => a.card && !airportCards[a.code]).map((a) => `images/${a.card}`),
+  ];
   const icons = ['og-default.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'favicon-32.png']
     .filter((f) => !existsSync(path.join(PUB, f)));
 

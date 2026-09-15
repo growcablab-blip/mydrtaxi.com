@@ -78,6 +78,23 @@ for (const lang of config.languages) {
     const p = path.join(DIST, href.endsWith('/') ? href + 'index.html' : href);
     check(existsSync(p), `${label} broken link ${href}`);
   }
+  // Images: responsive sources exist, no local filesystem paths, loading priorities, no layout shift
+  for (const [, set] of html.matchAll(/(?:srcset|imagesrcset)="([^"]+)"/g)) {
+    for (const part of set.split(',')) {
+      const u = part.trim().split(/\s+/)[0];
+      check(existsSync(path.join(DIST, u)), `${label} srcset target ${u}`);
+    }
+  }
+  check(!/\b[A-Za-z]:\\|file:\/\/|Winton Taxi|AI GEN/.test(html), `${label} no local filesystem paths`);
+  const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
+  check(imgs.every((i) => /\swidth="\d+"/.test(i) && /\sheight="\d+"/.test(i)), `${label} images have intrinsic width/height`);
+  check(/<img[^>]+fetchpriority="high"/.test(html) && /<link rel="preload" as="image"/.test(html), `${label} hero image prioritized`);
+  check(imgs.filter((i) => !/class="logo"|fetchpriority/.test(i)).every((i) => /loading="lazy"/.test(i)), `${label} below-the-fold images lazy-load`);
+  const cards = [...html.matchAll(/<a class="apt-card"[^>]*>/g)].map((m) => m[0]);
+  check(cards.length === config.airports.length, `${label} ${cards.length} airport image cards`);
+  check(cards.every((a) => /href="https:\/\/wa\.me\/\d+\?text=[^"]+"/.test(a) && /aria-label="[^"]+"/.test(a)), `${label} airport cards are real WhatsApp links with aria-labels`);
+  check(/class="final-scene has-photo"[\s\S]*?<h2>[\s\S]*?data-cta="final"[\s\S]*?href="tel:/.test(html), `${label} final CTA keeps live heading, WhatsApp and phone buttons over the photo`);
+
   for (const [, id] of html.matchAll(/<use href="#([^"]+)"/g)) check(html.includes(`<symbol id="${id}"`), `${label} icon ${id}`);
   check([...html.matchAll(/<img\b[^>]*>/g)].every((m) => /\salt="/.test(m[0])), `${label} images have alt`);
   check(!/\{(airport|route)\}/.test(html), `${label} unreplaced template placeholder`);

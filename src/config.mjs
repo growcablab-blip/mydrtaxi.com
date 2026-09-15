@@ -13,16 +13,20 @@ export const config = {
   languages: ['en', 'es', 'fr', 'ru'],
   ogLocale: { en: 'en_US', es: 'es_DO', fr: 'fr_FR', ru: 'ru_RU' },
 
-  // Drop real photos into public/images/ using these base names
-  // (.jpg, .jpeg, .png or .webp — add both .webp and .jpg for best results).
-  // Missing photos render as clean illustrated placeholders.
+  // Site photography, relative to public/images/. `variants` are extra widths that
+  // must exist as <name>-<width>.jpg next to the file (used for srcset).
+  // A missing file renders the illustrated placeholder instead.
   photos: {
-    hero: 'winton-minivan',       // Winton with the Toyota minivan (portrait 4:4.6)
-    portrait: 'winton-portrait',  // Friendly photo of Winton (4:4.4)
-    avatar: 'winton-avatar',      // Face crop for the round driver-card avatar (square); falls back to portrait
-    exterior: 'minivan-exterior', // The minivan, e.g. trunk full of luggage (landscape 16:10)
-    airport: 'airport-luggage',   // Airport pickup / loading luggage (landscape 16:10)
+    hero: { file: 'winton-driving.jpg', width: 1536, height: 1024, variants: [960] },
+    portrait: { file: 'meet-winton.jpg', width: 1374, height: 1145, variants: [800] },
+    exterior: { file: 'vehicle/exterior.jpg', width: 1316, height: 482, variants: [800] },
+    interior: { file: 'vehicle/interior.jpg', width: 1316, height: 482, variants: [800] },
+    cta: { file: 'cta/airport-arrival.jpg', width: 1920, height: 819, variants: [1100] },
   },
+
+  // Complete airport card visuals (text + button artwork baked in); the whole card
+  // is rendered as a real WhatsApp link.
+  airportCard: { width: 413, height: 779 },
 
   // Paste the embed code from your live Google Reviews widget provider
   // (e.g. Elfsight, Trustindex, EmbedSocial) between the backticks.
@@ -33,10 +37,10 @@ export const config = {
 
   // English names used in structured data.
   airports: [
-    { code: 'POP', key: 'pop', name: 'Gregorio Luperón International Airport', city: 'Puerto Plata' },
-    { code: 'STI', key: 'sti', name: 'Cibao International Airport', city: 'Santiago de los Caballeros' },
-    { code: 'SDQ', key: 'sdq', name: 'Las Américas International Airport', city: 'Santo Domingo' },
-    { code: 'PUJ', key: 'puj', name: 'Punta Cana International Airport', city: 'Punta Cana' },
+    { code: 'POP', key: 'pop', name: 'Gregorio Luperón International Airport', city: 'Puerto Plata', card: 'airports/pop.jpg' },
+    { code: 'STI', key: 'sti', name: 'Cibao International Airport', city: 'Santiago de los Caballeros', card: 'airports/sti.jpg' },
+    { code: 'SDQ', key: 'sdq', name: 'Las Américas International Airport', city: 'Santo Domingo', card: 'airports/sdq.jpg' },
+    { code: 'PUJ', key: 'puj', name: 'Punta Cana International Airport', city: 'Punta Cana', card: 'airports/puj.jpg' },
   ],
 
   // [from place key, to place key, approx. drive minutes]
