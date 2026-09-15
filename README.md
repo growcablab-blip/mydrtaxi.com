@@ -28,6 +28,30 @@ npm run icons     # regenerate favicons, app icons and og-default.png (Windows)
 | Structured data                           | `src/schema.mjs`             |
 | Photos                                    | `public/images/` (see README there) |
 
+## Production hosting (Railway)
+
+- **Project / service:** `mydrtaxi.com` / `mydrtaxi` (GrowCabLab workspace, `production` environment). Auto-deploys on every push to `main`.
+- **`railway.json`:**
+  - Railpack builder.
+  - Build command is `npm test`: it builds `dist/` and runs every launch check, so a failing check blocks the deploy.
+  - Start command is `npm start`, which runs `node scripts/serve.mjs --no-build`.
+  - Health check path is `/`.
+- **`scripts/serve.mjs` in production** (enabled automatically on Railway via `RAILWAY_ENVIRONMENT`):
+  - `www.mydrtaxi.com` → `https://mydrtaxi.com` (301, keeps path and query).
+  - HTTP → HTTPS (301).
+  - `/en.html`, `/es.html` and other legacy URLs → clean URLs.
+  - Security headers, plus HSTS on the canonical host.
+  - HTML revalidates on every request; images are cached for 30 days.
+  - Gzip compression.
+  - `X-Robots-Tag: noindex` on any non-canonical host, such as `*.up.railway.app`.
+  - Dotfiles are never served.
+- **Railway test URL:** https://mydrtaxi-production.up.railway.app
+- **DNS:** Cloudflare, DNS-only (grey cloud), because GoDaddy can't CNAME the bare domain.
+  - `mydrtaxi.com` and `www.mydrtaxi.com` are CNAMEs to the targets Railway shows under Service → Settings → Networking.
+  - Railway's `_railway-verify` TXT records are also required.
+  - Railway issues the SSL certificates.
+- The `_headers`, `_redirects` and `.htaccess` files in `dist/` are only used if the site is ever moved to Netlify, Cloudflare Pages or Apache.
+
 ## Before launch
 
 1. **Photos:** add `winton-minivan.jpg`, `winton-portrait.jpg`, `minivan-exterior.jpg` and `minivan-interior.jpg` to `public/images/`, then run `npm run build`. Placeholders swap automatically.
