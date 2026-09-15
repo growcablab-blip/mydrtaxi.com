@@ -1,0 +1,16 @@
+{
+  "name": "mydrtaxi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "My DR Taxi — mydrtaxi.com static lead-generation site (EN/ES/FR/RU)",
+  "type": "module",
+  "engines": { "node": "22.x" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs && node scripts/test.mjs",
+    "start": "node scripts/serve.mjs --no-build",
+    "dev": "node scripts/serve.mjs --draft --watch",
+    "preview": "node scripts/serve.mjs",
+    "icons": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/make-icons.ps1"
+  }
+}
