@@ -40,7 +40,7 @@ export function buildSchema({ lang, t, config: c, url, ogImage }) {
           availableLanguage: ['English', 'Spanish', 'French', 'Russian'],
           hoursAvailable: { '@type': 'OpeningHoursSpecification', opens: '00:00', closes: '23:59' },
         },
-        employee: { '@type': 'Person', name: c.driver, jobTitle: 'Private driver' },
+        employee: { '@type': 'Person', name: c.driver, jobTitle: 'Founder and driver' },
       },
       {
         '@type': 'TaxiService',

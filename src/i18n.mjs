@@ -19,17 +19,17 @@ const en = {
   hero: {
     eyebrow: 'Private taxi · Cabarete · Sosúa · Puerto Plata',
     h1: 'Your private driver in the Dominican Republic.',
-    lead: 'Airport meet-and-greet, local rides and nationwide transfers with Winton — in a clean Toyota minivan with Wi‑Fi, day or night. Message your driver directly on WhatsApp.',
+    lead: 'Airport meet-and-greet, local rides and nationwide transfers with Winton and his trusted team — in a clean Toyota minivan with Wi‑Fi, day or night. Message us directly on WhatsApp.',
     reply: 'Direct to your driver · No call centre · 24/7',
     badges: ['24/7 service', 'Airport meet & greet', 'Onboard Wi‑Fi', 'Up to 6 passengers'],
   },
-  driver: { role: 'Your driver', status: 'Available 24/7' },
+  driver: { role: 'Founder & driver', status: 'Team available 24/7' },
   services: {
     kicker: 'Services',
     title: 'From the arrivals hall to your front door.',
-    intro: 'One driver and a clear price agreed on WhatsApp before you ride. No apps, no call centres, no surprises.',
+    intro: 'Your driver and a clear price agreed on WhatsApp before you ride. No apps, no call centres, no surprises.',
     items: [
-      { t: 'Airport meet & greet', d: 'Winton waits in arrivals with a sign showing your name, helps with your luggage and takes you straight to your hotel, villa or condo.' },
+      { t: 'Airport meet & greet', d: 'Winton or one of his trusted drivers will meet you in arrivals with a sign showing your name, help with your luggage and take you straight to your hotel, villa or condo.' },
       { t: 'Airport transfers', d: 'Pickups and drop-offs at Puerto Plata (POP), Santiago (STI), Santo Domingo (SDQ) and Punta Cana (PUJ).' },
       { t: 'Cabarete, Sosúa & Puerto Plata', d: 'Reliable local rides along the North Coast: restaurants, beaches, kite spots, shopping and nights out.' },
       { t: 'Nationwide private transfers', d: 'Long-distance rides anywhere in the Dominican Republic, in comfort, with Wi‑Fi so you stay connected the whole way.' },
@@ -38,7 +38,7 @@ const en = {
   winton: {
     kicker: 'Your driver',
     title: 'Meet Winton.',
-    body: 'My DR Taxi is Winton’s private taxi service on the North Coast of the Dominican Republic. When you message, you talk directly with Winton and his small, trusted team — not a call centre — so everything is clear before you land and there’s always someone to call.',
+    body: 'My DR Taxi is led by Winton and a small team of trusted local drivers on the North Coast of the Dominican Republic. When you message, you speak directly with Winton or someone on his team — not a call centre — so everything is clear before you land and there’s always someone available.',
     points: [
       'Knows Cabarete, Sosúa, Puerto Plata and routes across the country',
       'Clean, well-kept Toyota minivan with strong A/C',
@@ -94,10 +94,10 @@ const en = {
   reviews: {
     kicker: 'Reviews',
     title: 'What travelers say.',
-    intro: 'Read what real passengers say about riding with Winton.',
+    intro: 'Read what real passengers say about riding with Winton and the My DR Taxi team.',
     button: 'Read our Google reviews',
     fallbackTitle: 'Reviews on Google',
-    fallbackBody: 'Read honest reviews from travelers who rode with Winton — or leave your own after your trip.',
+    fallbackBody: 'Read honest reviews from travelers who rode with Winton or one of his trusted drivers — or leave your own after your trip.',
   },
   faq: {
     kicker: 'FAQ',
@@ -113,7 +113,7 @@ const en = {
       { q: 'How much is a taxi from Puerto Plata Airport to Cabarete or Sosúa?', a: 'Prices depend on the route, time and number of passengers. Send your details on WhatsApp for a quick, clear quote — the price is agreed before your ride.' },
     ],
   },
-  final: { title: 'Ready when you are.', body: 'Tell us where you are, where you’re going and when. Your driver will reply on WhatsApp.' },
+  final: { title: 'Ready when you are.', body: 'Tell us where you are, where you’re going and when. You’ll get a direct reply on WhatsApp.' },
   footer: {
     tagline: 'Private taxi & airport transfers in Cabarete, Sosúa, Puerto Plata and across the Dominican Republic.',
     areasTitle: 'Service areas', contactTitle: 'Contact', langsTitle: 'Language', rights: 'All rights reserved.',
@@ -146,17 +146,17 @@ const es = {
   hero: {
     eyebrow: 'Taxi privado · Cabarete · Sosúa · Puerto Plata',
     h1: 'Tu conductor privado en República Dominicana.',
-    lead: 'Recepción en el aeropuerto, viajes locales y traslados a todo el país con Winton, en una minivan Toyota limpia con Wi‑Fi, de día o de noche. Escríbele directamente por WhatsApp.',
+    lead: 'Recepción en el aeropuerto, viajes locales y traslados a todo el país con Winton y su equipo de confianza, en una minivan Toyota limpia con Wi‑Fi, de día o de noche. Escríbenos directamente por WhatsApp.',
     reply: 'Directo con tu conductor · Sin centralita · 24/7',
     badges: ['Servicio 24/7', 'Recepción en aeropuerto', 'Wi‑Fi a bordo', 'Hasta 6 pasajeros'],
   },
-  driver: { role: 'Tu conductor', status: 'Disponible 24/7' },
+  driver: { role: 'Fundador y conductor', status: 'Equipo 24/7' },
   services: {
     kicker: 'Servicios',
     title: 'Desde la sala de llegadas hasta tu puerta.',
-    intro: 'Un conductor y un precio claro acordado por WhatsApp antes del viaje. Sin apps, sin centralitas, sin sorpresas.',
+    intro: 'Tu conductor y un precio claro acordado por WhatsApp antes del viaje. Sin apps, sin centralitas, sin sorpresas.',
     items: [
-      { t: 'Recepción en el aeropuerto', d: 'Winton te espera en llegadas con un letrero con tu nombre, te ayuda con el equipaje y te lleva directo a tu hotel, villa o apartamento.' },
+      { t: 'Recepción en el aeropuerto', d: 'Winton o uno de sus conductores de confianza te recibe en llegadas con un letrero con tu nombre, te ayuda con el equipaje y te lleva directo a tu hotel, villa o apartamento.' },
       { t: 'Traslados al aeropuerto', d: 'Recogidas y traslados en Puerto Plata (POP), Santiago (STI), Santo Domingo (SDQ) y Punta Cana (PUJ).' },
       { t: 'Cabarete, Sosúa y Puerto Plata', d: 'Viajes locales confiables por la Costa Norte: restaurantes, playas, spots de kite, compras y salidas nocturnas.' },
       { t: 'Traslados privados a todo el país', d: 'Viajes de larga distancia a cualquier punto de República Dominicana, cómodos y con Wi‑Fi para que sigas conectado todo el camino.' },
@@ -165,7 +165,7 @@ const es = {
   winton: {
     kicker: 'Tu conductor',
     title: 'Conoce a Winton.',
-    body: 'My DR Taxi es el servicio de taxi privado de Winton en la Costa Norte de República Dominicana. Cuando escribes, hablas directamente con Winton y su pequeño equipo de confianza, no con una centralita: todo queda claro antes de aterrizar y siempre hay alguien a quien llamar.',
+    body: 'My DR Taxi lo dirige Winton junto a un pequeño equipo de conductores locales de confianza en la Costa Norte de República Dominicana. Cuando escribes, hablas directamente con Winton o con alguien de su equipo, no con una centralita: todo queda claro antes de aterrizar y siempre hay alguien disponible.',
     points: [
       'Conoce Cabarete, Sosúa, Puerto Plata y las rutas de todo el país',
       'Minivan Toyota limpia y bien cuidada, con buen aire acondicionado',
@@ -221,10 +221,10 @@ const es = {
   reviews: {
     kicker: 'Reseñas',
     title: 'Lo que dicen los viajeros.',
-    intro: 'Lee lo que opinan los pasajeros reales sobre viajar con Winton.',
+    intro: 'Lee lo que opinan los pasajeros reales sobre viajar con Winton y el equipo de My DR Taxi.',
     button: 'Ver reseñas en Google',
     fallbackTitle: 'Reseñas en Google',
-    fallbackBody: 'Lee reseñas reales de viajeros que viajaron con Winton, o deja la tuya después de tu viaje.',
+    fallbackBody: 'Lee reseñas reales de viajeros que viajaron con Winton o uno de sus conductores de confianza, o deja la tuya después de tu viaje.',
   },
   faq: {
     kicker: 'Preguntas frecuentes',
@@ -240,7 +240,7 @@ const es = {
       { q: '¿Cuánto cuesta un taxi del aeropuerto de Puerto Plata a Cabarete o Sosúa?', a: 'El precio depende de la ruta, la hora y el número de pasajeros. Envía tus datos por WhatsApp y recibirás una cotización rápida y clara; el precio se acuerda antes del viaje.' },
     ],
   },
-  final: { title: 'Listos cuando tú lo estés.', body: 'Dinos dónde estás, a dónde vas y cuándo. Tu conductor te responderá por WhatsApp.' },
+  final: { title: 'Listos cuando tú lo estés.', body: 'Dinos dónde estás, a dónde vas y cuándo. Te responderemos directamente por WhatsApp.' },
   footer: {
     tagline: 'Taxi privado y traslados al aeropuerto en Cabarete, Sosúa, Puerto Plata y toda República Dominicana.',
     areasTitle: 'Zonas de servicio', contactTitle: 'Contacto', langsTitle: 'Idioma', rights: 'Todos los derechos reservados.',
@@ -273,17 +273,17 @@ const fr = {
   hero: {
     eyebrow: 'Taxi privé · Cabarete · Sosúa · Puerto Plata',
     h1: 'Votre chauffeur privé en République dominicaine.',
-    lead: 'Accueil à l’aéroport, trajets locaux et transferts dans tout le pays avec Winton, dans un minivan Toyota propre avec Wi‑Fi, de jour comme de nuit. Écrivez directement à votre chauffeur sur WhatsApp.',
+    lead: 'Accueil à l’aéroport, trajets locaux et transferts dans tout le pays avec Winton et son équipe de confiance, dans un minivan Toyota propre avec Wi‑Fi, de jour comme de nuit. Écrivez-nous directement sur WhatsApp.',
     reply: 'En direct avec votre chauffeur · Sans centrale · 24/7',
     badges: ['Service 24/7', 'Accueil à l’aéroport', 'Wi‑Fi à bord', 'Jusqu’à 6 passagers'],
   },
-  driver: { role: 'Votre chauffeur', status: 'Disponible 24/7' },
+  driver: { role: 'Fondateur et chauffeur', status: 'Équipe 24/7' },
   services: {
     kicker: 'Services',
     title: 'Du hall d’arrivée jusqu’à votre porte.',
-    intro: 'Un chauffeur et un prix clair convenu sur WhatsApp avant le trajet. Pas d’application, pas de centrale, pas de surprise.',
+    intro: 'Votre chauffeur et un prix clair convenu sur WhatsApp avant le trajet. Pas d’application, pas de centrale, pas de surprise.',
     items: [
-      { t: 'Accueil à l’aéroport', d: 'Winton vous attend aux arrivées avec une pancarte à votre nom, vous aide avec vos bagages et vous conduit directement à votre hôtel, villa ou appartement.' },
+      { t: 'Accueil à l’aéroport', d: 'Winton ou l’un de ses chauffeurs de confiance vous attend aux arrivées avec une pancarte à votre nom, vous aide avec vos bagages et vous conduit directement à votre hôtel, villa ou appartement.' },
       { t: 'Transferts aéroport', d: 'Prises en charge et déposes à Puerto Plata (POP), Santiago (STI), Saint-Domingue (SDQ) et Punta Cana (PUJ).' },
       { t: 'Cabarete, Sosúa et Puerto Plata', d: 'Des trajets locaux fiables sur la Côte Nord : restaurants, plages, spots de kite, shopping et sorties.' },
       { t: 'Transferts privés dans tout le pays', d: 'Longues distances partout en République dominicaine, en tout confort, avec le Wi‑Fi pour rester connecté pendant tout le trajet.' },
@@ -292,7 +292,7 @@ const fr = {
   winton: {
     kicker: 'Votre chauffeur',
     title: 'Voici Winton.',
-    body: 'My DR Taxi est le service de taxi privé de Winton sur la Côte Nord de la République dominicaine. Quand vous écrivez, vous échangez directement avec Winton et sa petite équipe de confiance, pas avec une centrale : tout est clair avant l’atterrissage et il y a toujours quelqu’un à appeler.',
+    body: 'My DR Taxi est dirigé par Winton, entouré d’une petite équipe de chauffeurs locaux de confiance sur la Côte Nord de la République dominicaine. Quand vous écrivez, vous échangez directement avec Winton ou un membre de son équipe, pas avec une centrale : tout est clair avant l’atterrissage et il y a toujours quelqu’un de disponible.',
     points: [
       'Connaît Cabarete, Sosúa, Puerto Plata et les routes de tout le pays',
       'Minivan Toyota propre et bien entretenu, climatisation efficace',
@@ -348,10 +348,10 @@ const fr = {
   reviews: {
     kicker: 'Avis',
     title: 'Ce que disent les voyageurs.',
-    intro: 'Découvrez ce que de vrais passagers pensent de leurs trajets avec Winton.',
+    intro: 'Découvrez ce que de vrais passagers pensent de leurs trajets avec Winton et l’équipe My DR Taxi.',
     button: 'Lire nos avis Google',
     fallbackTitle: 'Avis sur Google',
-    fallbackBody: 'Lisez les avis de voyageurs qui ont roulé avec Winton, ou laissez le vôtre après votre trajet.',
+    fallbackBody: 'Lisez les avis de voyageurs qui ont roulé avec Winton ou l’un de ses chauffeurs de confiance, ou laissez le vôtre après votre trajet.',
   },
   faq: {
     kicker: 'FAQ',
@@ -367,7 +367,7 @@ const fr = {
       { q: 'Combien coûte un taxi de l’aéroport de Puerto Plata à Cabarete ou Sosúa ?', a: 'Le prix dépend du trajet, de l’horaire et du nombre de passagers. Envoyez vos informations sur WhatsApp pour obtenir rapidement un devis clair : le prix est convenu avant le trajet.' },
     ],
   },
-  final: { title: 'Prêts quand vous l’êtes.', body: 'Dites-nous où vous êtes, où vous allez et quand. Votre chauffeur vous répondra sur WhatsApp.' },
+  final: { title: 'Prêts quand vous l’êtes.', body: 'Dites-nous où vous êtes, où vous allez et quand. Vous recevrez une réponse directe sur WhatsApp.' },
   footer: {
     tagline: 'Taxi privé et transferts aéroport à Cabarete, Sosúa, Puerto Plata et dans toute la République dominicaine.',
     areasTitle: 'Zones desservies', contactTitle: 'Contact', langsTitle: 'Langue', rights: 'Tous droits réservés.',
@@ -400,17 +400,17 @@ const ru = {
   hero: {
     eyebrow: 'Частное такси · Кабарете · Сосуа · Пуэрто-Плата',
     h1: 'Ваш личный водитель в Доминиканской Республике.',
-    lead: 'Встреча в аэропорту, поездки по побережью и трансферы по всей стране с Winton — в чистом минивэне Toyota с Wi‑Fi, днём и ночью. Пишите водителю напрямую в WhatsApp.',
+    lead: 'Встреча в аэропорту, поездки по побережью и трансферы по всей стране с Winton и его проверенной командой — в чистом минивэне Toyota с Wi‑Fi, днём и ночью. Пишите нам напрямую в WhatsApp.',
     reply: 'Напрямую с водителем · Без колл-центра · 24/7',
     badges: ['Работаем 24/7', 'Встреча в аэропорту', 'Wi‑Fi в машине', 'До 6 пассажиров'],
   },
-  driver: { role: 'Ваш водитель', status: 'На связи 24/7' },
+  driver: { role: 'Основатель и водитель', status: 'Команда 24/7' },
   services: {
     kicker: 'Услуги',
     title: 'От зала прилёта до вашей двери.',
-    intro: 'Один водитель и понятная цена, согласованная в WhatsApp до поездки. Без приложений, без колл-центров, без сюрпризов.',
+    intro: 'Ваш водитель и понятная цена, согласованная в WhatsApp до поездки. Без приложений, без колл-центров, без сюрпризов.',
     items: [
-      { t: 'Встреча в аэропорту', d: 'Winton встретит вас в зоне прилёта с табличкой с вашим именем, поможет с багажом и отвезёт прямо в отель, виллу или апартаменты.' },
+      { t: 'Встреча в аэропорту', d: 'Winton или один из его проверенных водителей встретит вас в зоне прилёта с табличкой с вашим именем, поможет с багажом и отвезёт прямо в отель, виллу или апартаменты.' },
       { t: 'Трансферы из аэропортов', d: 'Встреча и доставка в аэропорты Пуэрто-Плата (POP), Сантьяго (STI), Санто-Доминго (SDQ) и Пунта-Кана (PUJ).' },
       { t: 'Кабарете, Сосуа и Пуэрто-Плата', d: 'Надёжные поездки по Северному побережью: рестораны, пляжи, кайт-споты, магазины и вечерний отдых.' },
       { t: 'Трансферы по всей стране', d: 'Дальние поездки в любую точку Доминиканской Республики — с комфортом и Wi‑Fi, чтобы оставаться на связи всю дорогу.' },
@@ -419,7 +419,7 @@ const ru = {
   winton: {
     kicker: 'Ваш водитель',
     title: 'Знакомьтесь: Winton.',
-    body: 'My DR Taxi — частное такси Winton на Северном побережье Доминиканской Республики. Когда вы пишете, вы общаетесь напрямую с Winton и его небольшой проверенной командой, а не с колл-центром: всё ясно ещё до посадки, и всегда есть кому позвонить.',
+    body: 'My DR Taxi — это Winton и небольшая команда проверенных местных водителей на Северном побережье Доминиканской Республики. Когда вы пишете, вы общаетесь напрямую с Winton или с кем-то из его команды, а не с колл-центром: всё ясно ещё до посадки, и всегда есть кто-то на связи.',
     points: [
       'Отлично знает Кабарете, Сосуа, Пуэрто-Плата и дороги по всей стране',
       'Чистый ухоженный минивэн Toyota с мощным кондиционером',
@@ -475,10 +475,10 @@ const ru = {
   reviews: {
     kicker: 'Отзывы',
     title: 'Что говорят путешественники.',
-    intro: 'Читайте, что реальные пассажиры пишут о поездках с Winton.',
+    intro: 'Читайте, что реальные пассажиры пишут о поездках с Winton и командой My DR Taxi.',
     button: 'Отзывы в Google',
     fallbackTitle: 'Отзывы в Google',
-    fallbackBody: 'Читайте отзывы путешественников, которые ездили с Winton, или оставьте свой после поездки.',
+    fallbackBody: 'Читайте отзывы путешественников, которые ездили с Winton или одним из его проверенных водителей, или оставьте свой после поездки.',
   },
   faq: {
     kicker: 'Вопросы',
@@ -494,7 +494,7 @@ const ru = {
       { q: 'Сколько стоит такси из аэропорта Пуэрто-Плата в Кабарете или Сосуа?', a: 'Цена зависит от маршрута, времени и количества пассажиров. Отправьте детали в WhatsApp и быстро получите понятную цену — она согласовывается до поездки.' },
     ],
   },
-  final: { title: 'Готовы, когда готовы вы.', body: 'Напишите, где вы, куда едете и когда. Водитель ответит вам в WhatsApp.' },
+  final: { title: 'Готовы, когда готовы вы.', body: 'Напишите, где вы, куда едете и когда. Вы получите прямой ответ в WhatsApp.' },
   footer: {
     tagline: 'Частное такси и трансферы из аэропортов в Кабарете, Сосуа, Пуэрто-Плата и по всей Доминиканской Республике.',
     areasTitle: 'География', contactTitle: 'Контакты', langsTitle: 'Язык', rights: 'Все права защищены.',
