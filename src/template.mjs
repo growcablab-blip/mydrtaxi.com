@@ -51,6 +51,7 @@ const SIZES = {
   portrait: '(min-width: 1180px) 520px, (min-width: 960px) 44vw, calc(100vw - 40px)',
   vehicle: '(min-width: 1180px) 570px, (min-width: 960px) 48vw, calc(100vw - 40px)',
   cta: '(min-width: 1180px) 1140px, calc(100vw - 40px)',
+  airport: '(min-width: 1180px) 270px, (min-width: 960px) 23vw, (min-width: 640px) 46vw, calc(100vw - 40px)',
 };
 
 const srcsetAttrs = (img, sizes) => (img.srcset ? ` srcset="${img.srcset}" sizes="${sizes}"` : '');
@@ -82,6 +83,10 @@ export function renderPage(ctx) {
   const badgeIcons = ['clock', 'sign', 'wifi', 'users'];
   const serviceIcons = ['sign', 'plane', 'pin', 'route'];
   const specIcons = ['users', 'wifi', 'wind', 'bag'];
+
+  const avatar = photos.avatar
+    ? `<img class="avatar-img" src="${photos.avatar.src}" alt="" width="46" height="46" decoding="async">`
+    : 'W';
 
   const heroPreload = photos.hero
     ? `<link rel="preload" as="image" href="${photos.hero.src}"${photos.hero.srcset ? ` imagesrcset="${photos.hero.srcset}" imagesizes="${SIZES.hero}"` : ''} fetchpriority="high">\n`
@@ -134,6 +139,11 @@ ${sprite}
     </div>
     <div class="hero-media">
       ${photo(photos.hero, t.alt.hero, { cls: 'photo-hero', eager: true, sizes: SIZES.hero, kind: 'van', draft, file: c.photos.hero.file })}
+      <div class="driver">
+        <span class="avatar" aria-hidden="true">${avatar}</span>
+        <span class="driver-id"><strong>${esc(c.driver)}</strong><small><span class="dot" aria-hidden="true"></span>${esc(t.driver.role)} · ${esc(t.driver.status)}</small></span>
+        <a class="btn btn-wa driver-btn" ${waAttrs(t.wa.default, 'driver-card')} aria-label="${esc(t.cta.talkLong)}">${ic('wa')}</a>
+      </div>
     </div>
   </div>
 </section>
@@ -176,10 +186,11 @@ ${sprite}
         const item = t.airports.items[a.code];
         const text = t.wa.airport.replace('{airport}', t.places[a.key]);
         const card = airportCards[a.code];
-        if (card) {
-          return `<a class="apt-card" ${waAttrs(text, 'airport-' + a.code)} aria-label="${esc(`${t.airports.action}: ${item.name}`)}"><img src="${card.src}" width="${card.width}" height="${card.height}" alt="${esc(`${a.code} · ${item.name} · ${item.area}`)}" loading="lazy" decoding="async"></a>`;
-        }
-        return `<a class="apt" ${waAttrs(text, 'airport-' + a.code)}><span class="code">${a.code}</span><strong>${esc(item.name)}</strong><span class="area">${ic('pin')}${esc(item.area)}</span><span class="go">${ic('wa')}${esc(t.airports.action)}${ic('arrow')}</span></a>`;
+        // Photo is decorative (alt=""): the link's accessible name is the live code/name/area/action text.
+        const photoLayer = card
+          ? `<img class="apt-img" src="${card.src}"${srcsetAttrs(card, SIZES.airport)} width="${card.width}" height="${card.height}" alt="" loading="lazy" decoding="async"><span class="apt-shade" aria-hidden="true"></span><span class="apt-badge" aria-hidden="true">${ic('plane')}</span>`
+          : '';
+        return `<a class="apt${card ? ' apt-photo' : ''}" ${waAttrs(text, 'airport-' + a.code)}>${photoLayer}<span class="apt-body"><span class="code">${a.code}</span><strong>${esc(item.name)}</strong><span class="area">${ic('pin')}${esc(item.area)}</span><span class="go">${ic('wa')}${esc(t.airports.action)}${ic('arrow')}</span></span></a>`;
       }).join('\n      ')}
     </div>
   </div>

@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { config } from '../src/config.mjs';
 import { dicts } from '../src/i18n.mjs';
+import { esc } from '../src/template.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -89,10 +90,18 @@ for (const lang of config.languages) {
   const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
   check(imgs.every((i) => /\swidth="\d+"/.test(i) && /\sheight="\d+"/.test(i)), `${label} images have intrinsic width/height`);
   check(/<img[^>]+fetchpriority="high"/.test(html) && /<link rel="preload" as="image"/.test(html), `${label} hero image prioritized`);
-  check(imgs.filter((i) => !/class="logo"|fetchpriority/.test(i)).every((i) => /loading="lazy"/.test(i)), `${label} below-the-fold images lazy-load`);
-  const cards = [...html.matchAll(/<a class="apt-card"[^>]*>/g)].map((m) => m[0]);
-  check(cards.length === config.airports.length, `${label} ${cards.length} airport image cards`);
-  check(cards.every((a) => /href="https:\/\/wa\.me\/\d+\?text=[^"]+"/.test(a) && /aria-label="[^"]+"/.test(a)), `${label} airport cards are real WhatsApp links with aria-labels`);
+  check(imgs.filter((i) => !/class="(logo|avatar-img)"|fetchpriority/.test(i)).every((i) => /loading="lazy"/.test(i)), `${label} below-the-fold images lazy-load`);
+  // Airport cards: photo + live, translated code/name/area/action inside one real WhatsApp link
+  const cards = [...html.matchAll(/<a class="apt apt-photo"([^>]*)>([\s\S]*?)<\/a>/g)];
+  check(cards.length === config.airports.length, `${label} ${cards.length} airport photo cards`);
+  const tr = dicts[lang].airports;
+  config.airports.forEach((a, i) => {
+    const [, attrs = '', body = ''] = cards[i] || [];
+    check(/href="https:\/\/wa\.me\/\d+\?text=[^"]+"/.test(attrs) && attrs.includes(`data-cta="airport-${a.code}"`), `${label} ${a.code} card is a real WhatsApp link`);
+    check(body.includes(`/images/${a.card}`) && body.includes('alt=""'), `${label} ${a.code} card uses photo ${a.card}`);
+    check([`>${a.code}<`, esc(tr.items[a.code].name), esc(tr.items[a.code].area), esc(tr.action)].every((s) => body.includes(s)), `${label} ${a.code} card shows live localized code/name/area/action`);
+  });
+  check(/class="driver"[\s\S]*?data-cta="driver-card"/.test(html), `${label} hero driver strip with live WhatsApp action`);
   check(/class="final-scene has-photo"[\s\S]*?<h2>[\s\S]*?data-cta="final"[\s\S]*?href="tel:/.test(html), `${label} final CTA keeps live heading, WhatsApp and phone buttons over the photo`);
 
   for (const [, id] of html.matchAll(/<use href="#([^"]+)"/g)) check(html.includes(`<symbol id="${id}"`), `${label} icon ${id}`);

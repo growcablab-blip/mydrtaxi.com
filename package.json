@@ -11,6 +11,7 @@
     "start": "node scripts/serve.mjs --no-build",
     "dev": "node scripts/serve.mjs --draft --watch",
     "preview": "node scripts/serve.mjs",
-    "icons": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/make-icons.ps1"
+    "icons": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/make-icons.ps1",
+    "images": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/make-images.ps1"
   }
 }
