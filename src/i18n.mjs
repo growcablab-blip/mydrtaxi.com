@@ -12,9 +12,9 @@ const en = {
   nav: { services: 'Services', airports: 'Airports', routes: 'Routes', reviews: 'Reviews', faq: 'FAQ' },
   cta: { talk: 'Talk to Your Driver', talkLong: 'Talk to Your Driver on WhatsApp', call: 'Call', quote: 'Get a quick quote' },
   wa: {
-    default: 'Hi Winton! I’d like to arrange a ride with My DR Taxi.',
-    airport: 'Hi Winton! I need an airport pickup at {airport}. My flight: ',
-    route: 'Hi Winton! I’d like a quote for a private transfer: {route}. Date: ',
+    default: 'Hi My DR Taxi! I’d like to arrange a ride.',
+    airport: 'Hi My DR Taxi! I need an airport pickup at {airport}. My flight: ',
+    route: 'Hi My DR Taxi! I’d like a quote for a private transfer: {route}. Date: ',
   },
   hero: {
     eyebrow: 'Private taxi · Cabarete · Sosúa · Puerto Plata',
@@ -80,7 +80,7 @@ const en = {
     submit: 'Send on WhatsApp',
     hint: 'Nothing is booked until you confirm with your driver.',
     msg: {
-      intro: 'Hi Winton! I’d like a quote for a ride:',
+      intro: 'Hi My DR Taxi! I’d like a quote for a ride:',
       outro: 'Thank you!',
       fields: { from: 'Pickup', to: 'Drop-off', date: 'Date', time: 'Time', pax: 'Passengers', flight: 'Flight', notes: 'Notes' },
     },
@@ -139,9 +139,9 @@ const es = {
   nav: { services: 'Servicios', airports: 'Aeropuertos', routes: 'Rutas', reviews: 'Reseñas', faq: 'Preguntas' },
   cta: { talk: 'Habla con tu conductor', talkLong: 'Habla con tu conductor por WhatsApp', call: 'Llamar', quote: 'Cotización rápida' },
   wa: {
-    default: '¡Hola Winton! Quisiera organizar un viaje con My DR Taxi.',
-    airport: '¡Hola Winton! Necesito que me recojan en el {airport}. Mi vuelo: ',
-    route: '¡Hola Winton! Quisiera una cotización para un traslado privado: {route}. Fecha: ',
+    default: '¡Hola My DR Taxi! Quisiera organizar un viaje.',
+    airport: '¡Hola My DR Taxi! Necesito que me recojan en el {airport}. Mi vuelo: ',
+    route: '¡Hola My DR Taxi! Quisiera una cotización para un traslado privado: {route}. Fecha: ',
   },
   hero: {
     eyebrow: 'Taxi privado · Cabarete · Sosúa · Puerto Plata',
@@ -207,7 +207,7 @@ const es = {
     submit: 'Enviar por WhatsApp',
     hint: 'No se reserva nada hasta que lo confirmes con tu conductor.',
     msg: {
-      intro: '¡Hola Winton! Quisiera una cotización para un viaje:',
+      intro: '¡Hola My DR Taxi! Quisiera una cotización para un viaje:',
       outro: '¡Gracias!',
       fields: { from: 'Recogida', to: 'Destino', date: 'Fecha', time: 'Hora', pax: 'Pasajeros', flight: 'Vuelo', notes: 'Notas' },
     },
@@ -266,9 +266,9 @@ const fr = {
   nav: { services: 'Services', airports: 'Aéroports', routes: 'Trajets', reviews: 'Avis', faq: 'FAQ' },
   cta: { talk: 'Parlez à votre chauffeur', talkLong: 'Parlez à votre chauffeur sur WhatsApp', call: 'Appeler', quote: 'Devis rapide' },
   wa: {
-    default: 'Bonjour Winton ! J’aimerais organiser un trajet avec My DR Taxi.',
-    airport: 'Bonjour Winton ! Je souhaite une prise en charge — {airport}. Mon vol : ',
-    route: 'Bonjour Winton ! Je souhaite un devis pour un transfert privé : {route}. Date : ',
+    default: 'Bonjour My DR Taxi ! J’aimerais organiser un trajet.',
+    airport: 'Bonjour My DR Taxi ! Je souhaite une prise en charge — {airport}. Mon vol : ',
+    route: 'Bonjour My DR Taxi ! Je souhaite un devis pour un transfert privé : {route}. Date : ',
   },
   hero: {
     eyebrow: 'Taxi privé · Cabarete · Sosúa · Puerto Plata',
@@ -334,7 +334,7 @@ const fr = {
     submit: 'Envoyer sur WhatsApp',
     hint: 'Rien n’est réservé tant que vous n’avez pas confirmé avec votre chauffeur.',
     msg: {
-      intro: 'Bonjour Winton ! Je souhaite un devis pour un trajet :',
+      intro: 'Bonjour My DR Taxi ! Je souhaite un devis pour un trajet :',
       outro: 'Merci !',
       fields: { from: 'Départ', to: 'Destination', date: 'Date', time: 'Heure', pax: 'Passagers', flight: 'Vol', notes: 'Remarques' },
     },
@@ -393,9 +393,9 @@ const ru = {
   nav: { services: 'Услуги', airports: 'Аэропорты', routes: 'Маршруты', reviews: 'Отзывы', faq: 'Вопросы' },
   cta: { talk: 'Написать водителю', talkLong: 'Написать водителю в WhatsApp', call: 'Позвонить', quote: 'Узнать цену' },
   wa: {
-    default: 'Здравствуйте, Winton! Хочу заказать поездку с My DR Taxi.',
-    airport: 'Здравствуйте, Winton! Нужна встреча: {airport}. Мой рейс: ',
-    route: 'Здравствуйте, Winton! Хочу узнать цену на трансфер: {route}. Дата: ',
+    default: 'Здравствуйте, My DR Taxi! Хочу заказать поездку.',
+    airport: 'Здравствуйте, My DR Taxi! Нужна встреча: {airport}. Мой рейс: ',
+    route: 'Здравствуйте, My DR Taxi! Хочу узнать цену на трансфер: {route}. Дата: ',
   },
   hero: {
     eyebrow: 'Частное такси · Кабарете · Сосуа · Пуэрто-Плата',
@@ -461,7 +461,7 @@ const ru = {
     submit: 'Отправить в WhatsApp',
     hint: 'Ничего не бронируется, пока вы не подтвердите поездку с водителем.',
     msg: {
-      intro: 'Здравствуйте, Winton! Хочу узнать цену на поездку:',
+      intro: 'Здравствуйте, My DR Taxi! Хочу узнать цену на поездку:',
       outro: 'Спасибо!',
       fields: { from: 'Откуда', to: 'Куда', date: 'Дата', time: 'Время', pax: 'Пассажиры', flight: 'Рейс', notes: 'Примечания' },
     },
